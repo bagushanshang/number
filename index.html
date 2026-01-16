@@ -1,0 +1,88 @@
+<!DOCTYPE html>
+<html lang="zh">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>手机号码循环滚动显示</title>
+  <style>
+    /* 定义滚动容器样式 */
+    .scroll-container {
+      width: 300px; /* 容器宽度 */
+      height: 200px; /* 容器高度 */
+      margin: 50px auto; /* 居中显示 */
+      border: 1px solid #ccc; /* 边框 */
+      overflow: hidden; /* 隐藏溢出内容 */
+      position: relative; /* 相对定位 */
+      font-family: Arial, sans-serif; /* 字体 */
+    }
+    /* 定义滚动内容区域 */
+    .scroll-content {
+      height: 200%; /* 内容高度为容器的两倍，实现无缝循环 */
+      animation: scroll-vertical 20s linear infinite; /* 垂直滚动动画 */
+      display: flex;
+      flex-direction: column;
+      justify-content: space-around;
+      padding: 0;
+      margin: 0;
+    }
+    /* 定义滚动动画关键帧 */
+    @keyframes scroll-vertical {
+      0% {
+        transform: translateY(0); /* 动画起始位置 */
+      }
+      100% {
+        transform: translateY(-50%); /* 动画结束位置，移动半个容器高度 */
+      }
+    }
+    /* 定义每个手机号码的样式 */
+    .phone-item {
+      height: 50px; /* 每个号码的高度 */
+      line-height: 50px; /* 垂直居中 */
+      text-align: center; /* 水平居中 */
+      font-size: 18px; /* 字号 */
+      color: #333; /* 颜色 */
+      background-color: #f9f9f9; /* 背景色 */
+      border-bottom: 1px solid #eee; /* 分隔线 */
+    }
+    /* 响应式设计 */
+    @media (max-width: 480px) {
+      .scroll-container {
+        width: 250px;
+        height: 150px;
+      }
+      .phone-item {
+        height: 40px;
+        line-height: 40px;
+        font-size: 16px;
+      }
+    }
+  </style>
+</head>
+<body>
+  <!-- 滚动容器 -->
+  <div class="scroll-container">
+    <!-- 滚动内容区域 -->
+    <div class="scroll-content" id="scrollContent">
+      <!-- 手号码将通过JavaScript动态插入 -->
+    </div>
+  </div>
+
+  <script>
+    // 定义手机号码数组
+    const phoneNumbers = [
+      "138****8000", "152****0543", "188****5670", "189****6544","139****5231", "137****4332", "186****8877",
+      "150****3337", "186****7890", "136****5433", "131****6789","152****7810", "135****6542", "159****4321", "137****5670",
+      "159****7756", "185****9876","133****9012", "156****4321", "189****5678",
+    ];
+    // 获取滚动内容元素
+    const scrollContent = document.getElementById("scrollContent");
+    // 动态生成手机号码元素并添加到容器
+    phoneNumbers.forEach(number => {
+      const item = document.createElement("div");
+      item.className = "phone-item";
+      item.textContent = number;
+      scrollContent.appendChild(item);
+    });
+  </script>
+</body>
+</html>
