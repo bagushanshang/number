@@ -82,12 +82,19 @@
       }
     }
   </style>
-  <script src="data.js"></script>
 </head>
 
-<body>
-  <script>
-    const phoneNumbers = [];
+<body>  
+  <!-- 滚动容器 -->
+  <div class="scroll-container">
+    <!-- 滚动内容区域 -->
+    <div class="scroll-content" id="scrollContent">
+      <!-- 手号码将通过JavaScript动态插入 -->
+    </div>
+  </div>
+<script type="module">
+    import { userData } from './data.js'；
+    var phoneNumbers = [];
     // 使用数据
     document.addEventListener('DOMContentLoaded', function () {
       // 获取滚动内容元素
@@ -105,15 +112,5 @@
       }
     });
   </script>
-  <!-- 滚动容器 -->
-  <div class="scroll-container">
-    <!-- 滚动内容区域 -->
-    <div class="scroll-content" id="scrollContent">
-      <!-- 手号码将通过JavaScript动态插入 -->
-    </div>
-  </div>
-
-
 </body>
-
 </html>
