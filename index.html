@@ -1,10 +1,10 @@
 <!DOCTYPE html>
-<html lang="zh">
+<html lang="en">
 
 <head>
-  <meta charset="UTF-8" />
-  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>手机号码循环滚动显示</title>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>手机号滚动效果</title>
   <style>
     /* 定义滚动容器样式 */
     .scroll-container {
@@ -28,7 +28,7 @@
     .scroll-content {
       height: 200%;
       /* 内容高度为容器的两倍，实现无缝循环 */
-      animation: scroll-vertical 20s linear infinite;
+      animation: scroll-vertical 120s linear infinite;
       /* 垂直滚动动画 */
       display: flex;
       flex-direction: column;
@@ -45,7 +45,7 @@
       }
 
       100% {
-        transform: translateY(-50%);
+        transform: translateY(-600px);
         /* 动画结束位置，移动半个容器高度 */
       }
     }
@@ -81,19 +81,21 @@
         font-size: 16px;
       }
     }
+    
   </style>
+  <script src="data.js"></script>
+
 </head>
 
-<body>  
+<body>
   <!-- 滚动容器 -->
-  <div class="scroll-container">
+  <div class="scroll-container" id="phoneList">
     <!-- 滚动内容区域 -->
     <div class="scroll-content" id="scrollContent">
       <!-- 手号码将通过JavaScript动态插入 -->
     </div>
   </div>
-<script type="module">
-    import { userData } from './data.js'；
+  <script>
     var phoneNumbers = [];
     // 使用数据
     document.addEventListener('DOMContentLoaded', function () {
@@ -108,9 +110,11 @@
           item.textContent = number;
           scrollContent.appendChild(item);
         });
-        userName.textContent = userData.name; // 显示用户名字
       }
     });
   </script>
+
+  </script>
 </body>
+
 </html>
